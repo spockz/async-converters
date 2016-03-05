@@ -1,9 +1,9 @@
-package async.compat.twitter.rxjava
-
+package io.async.converters.twitter.rxjava
 
 import com.twitter.util.{Duration, Await}
 import org.scalatest.FlatSpec
 import rx.Observable
+import FutureConverters._
 
 /**
  * Created by alessandro on 03/03/16.
@@ -16,12 +16,12 @@ class ConversionsTest extends FlatSpec {
     val rxObservable = Observable.just(obj)
 
 
-    val twitterFuture1 = Conversions.toFuture(rxObservable)
+    val twitterFuture1 = rxObservable.toFuture //Conversions.toFuture(rxObservable)
     assert(Await.result(twitterFuture1) === obj, Duration.fromMilliseconds(5))
 
     val rxSingleObservable = rxObservable.toSingle
 
-    val twitterFuture2 = Conversions.toFuture(rxSingleObservable)
+    val twitterFuture2 = rxSingleObservable.toFuture
     assert(Await.result(twitterFuture2) === obj, Duration.fromMilliseconds(5))
   }
 }

@@ -1,14 +1,15 @@
-package async.compat.rxjava.twitter
+package io.async.converters.rxjava.twitter
 
 import com.twitter.util.{MockTimer, Future, Await, Duration}
+import io.async.converters.twitter.rxjava.FutureConverters
 import org.scalatest.{Matchers, FlatSpec}
 import rx.Observable
 import rx.functions.Action1
-
+import RxConverters._
 /**
  * Created by alessandro on 03/03/16.
  */
-class ConversionsTest extends FlatSpec with Matchers{
+class FutureRxConvertersTest extends FlatSpec with Matchers{
   behavior of "Twitter Util Future to RxJava Conversions"
 
   it should "convert constant Observables correctly" in {
@@ -19,7 +20,7 @@ class ConversionsTest extends FlatSpec with Matchers{
 
     var observedValue : Option[Object] = None
 
-    val observable = Conversions.toObservable(twitterFuture)
+    val observable = twitterFuture.toObservable
 
     observable.doOnNext(new Action1[Object] {
       override def call(t: Object): Unit = observedValue = Some(t)
