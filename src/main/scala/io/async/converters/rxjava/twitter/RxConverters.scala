@@ -21,7 +21,7 @@ object RxConverters {
 
   private def singleAsFuture[A](single: Single[A]): Future[A] =
     new Promise[A] {
-      private val subscription = single.subscribe(new SingleSubscriber[A] {
+      private[this] val subscription = single.subscribe(new SingleSubscriber[A] {
         override def onError(error: Throwable): Unit = parent.setException(error)
 
         override def onSuccess(value: A): Unit = parent.setValue(value)
