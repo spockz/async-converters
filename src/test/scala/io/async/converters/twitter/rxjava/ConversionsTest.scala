@@ -3,7 +3,7 @@ package io.async.converters.twitter.rxjava
 import com.twitter.util.{Duration, Await}
 import org.scalatest.FlatSpec
 import rx.Observable
-import FutureConverters._
+import Rx2FutureConverters._
 
 /**
  * Created by alessandro on 03/03/16.

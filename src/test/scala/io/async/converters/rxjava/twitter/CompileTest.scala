@@ -12,10 +12,10 @@ class CompileTest extends FlatSpec {
 
   it should "compile" in {
 
-    import io.async.converters.twitter.rxjava.FutureConverters._
-    import RxConverters._
+    import io.async.converters.twitter.rxjava.Rx2FutureConverters._
+    import TwitterUtil2RxConverters._
 
-    toFuture(Future.const(Try(new Object)).toObservable.toSingle)
+    fromFuture(Future.const(Try(new Object))).toObservable.toSingle
     Future.const(Try(new Object)).toObservable.toSingle.toFuture
     Observable.just(new Object).toSingle.toFuture.toSingle
   }
