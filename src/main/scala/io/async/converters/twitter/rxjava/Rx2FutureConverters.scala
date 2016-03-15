@@ -29,7 +29,7 @@ object Rx2FutureConverters {
   implicit def fromObservable[A](observable: Observable[A]): ToFuture[A] =
     fromSingle(observable.toSingle)
 
-  private def singleAsFuture[A](single: rx.Single[A]): Future[A] =
+  private[this] def singleAsFuture[A](single: rx.Single[A]): Future[A] =
     new Promise[A] {
       private[this] val subscription = single.subscribe(new SingleSubscriber[A] {
         override def onError(error: Throwable): Unit = parent.setException(error)
