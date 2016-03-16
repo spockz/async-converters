@@ -20,6 +20,6 @@ public class Compilation {
         Rx2FutureConverters.Single$.MODULE$.toFuture(observable.toSingle());
 
         Rx2FutureConverters.fromSingle(observable.toSingle()).toFuture();
-        new TwitterUtil2RxConverters.ToRx<Object>(Future.value(new Object()));
+        new TwitterUtil2RxConverters.FutureToRx<Object>(Future.value(new Object()));
     }
 }
