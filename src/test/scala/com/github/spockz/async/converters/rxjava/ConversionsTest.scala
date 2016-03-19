@@ -23,5 +23,7 @@ class ConversionsTest extends FlatSpec {
 
     val twitterFuture2 = rxSingleObservable.toFuture
     assert(Await.result(twitterFuture2) === obj, Duration.fromMilliseconds(5))
+
+    val twitterFuture3 = Rx2FutureConverters.FromSingle.toFuture(rxObservable.toSingle)
   }
 }

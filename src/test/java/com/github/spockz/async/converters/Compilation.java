@@ -21,6 +21,6 @@ public class Compilation {
 //        Rx2FutureConverters.FromSingle.toFuture(observable.toSingle());
 
         Rx2FutureConverters.fromSingle(observable.toSingle()).toFuture();
-        new TwitterUtil2RxConverters.FutureToRx<Object>(Future.value(new Object()));
+        new TwitterUtil2RxConverters.FutureToRx<Object>(Future.value(new Object())).toSingle();
     }
 }
