@@ -1,4 +1,4 @@
-package io.async.converters.twitter.rxjava
+package com.github.spockz.async.converters.rxjava
 
 import com.twitter.util.{Future, Promise}
 import rx.{Observable, SingleSubscriber}
@@ -11,7 +11,7 @@ import scala.language.implicitConversions
  */
 object Rx2FutureConverters {
 
-  object Single {
+  object FromSingle {
     def toFuture[A](single: rx.Single[A]): Future[A] =
       new ToFuture[A](single).toFuture
   }
@@ -27,7 +27,7 @@ object Rx2FutureConverters {
 
   @inline
   implicit def fromObservable[A](observable: Observable[A]): ToFuture[A] =
-    fromSingle(observable.toSingle)
+    fromSingle(observable.first.toSingle)
 
   private[this] def singleAsFuture[A](single: rx.Single[A]): Future[A] =
     new Promise[A] {

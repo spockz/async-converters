@@ -1,4 +1,4 @@
-package io.async.converters.twitter.rxjava
+package com.github.spockz.async.converters.rxjava
 
 import com.twitter.util.{Duration, Await}
 import org.scalatest.FlatSpec

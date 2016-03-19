@@ -1,6 +1,7 @@
-package io.async.converters.rxjava.twitter
+package com.github.spockz.async.converters.twitterutil
 
-import com.twitter.util.{Try, Future}
+import com.github.spockz.async.converters.rxjava.Rx2FutureConverters._
+import com.twitter.util.{Future, Try}
 import org.scalatest.FlatSpec
 import rx.Observable
 
@@ -12,7 +13,6 @@ class CompileTest extends FlatSpec {
 
   it should "compile" in {
 
-    import io.async.converters.twitter.rxjava.Rx2FutureConverters._
     import TwitterUtil2RxConverters._
 
     fromFuture(Future.const(Try(new Object))).toObservable.toSingle

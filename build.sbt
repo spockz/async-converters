@@ -65,6 +65,6 @@ apiMappings ++= {
   // Define external documentation paths
   Map(
     findJar("util-core") -> url("https://twitter.github.io/util/docs/"),
-    findJar("rxjava") -> url("http://reactivex.io/RxJava/javadoc/index.html")
+    findJar("rxjava") -> url("http://reactivex.io/RxJava/javadoc/index.htmlte")
   )
 }

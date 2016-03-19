@@ -1,4 +1,4 @@
-package io.async.converters.rxjava.twitter
+package com.github.spockz.async.converters.twitterutil
 
 import com.twitter.util._
 import rx._
