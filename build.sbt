@@ -8,6 +8,8 @@ scalaVersion := scalaLibVersion
 
 crossScalaVersions := Seq("2.10.6", scalaLibVersion)
 
+releaseCrossBuild := true
+
 libraryDependencies ++= Seq(
   "io.reactivex" % "rxjava" % "1.1.1" % "provided",
   "com.twitter" %% "util-core" % "6.32.0" % "provided",
