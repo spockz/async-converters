@@ -77,7 +77,7 @@ Please let us know if you have any questions about this process!
 
 Please get started by reporting any suggestions for improvement in the
 issues section and also feel free to ask questions on 
-[gitter](https://gitter.im/spockz/async-converters)
+[gitter](https://gitter.im/spockz/async-converters).
 
 ## Documentation
 
