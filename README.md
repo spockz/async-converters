@@ -34,5 +34,5 @@ From Java
 ```java
 final Observable<Object> observable = Observable.just(5);
 final Future<Object> future = 
-  Rx2FutureConverters.fromSingle(observable.toSingle());
+  Rx2FutureConverters.fromSingle(observable.toSingle()).toFuture();
 ```

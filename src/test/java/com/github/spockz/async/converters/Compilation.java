@@ -20,7 +20,8 @@ public class Compilation {
         // This does actually compile when called from outside the project...
 //        Rx2FutureConverters.FromSingle.toFuture(observable.toSingle());
 
-        Rx2FutureConverters.fromSingle(observable.toSingle()).toFuture();
+        final Future<Object> futureObject =
+                Rx2FutureConverters.fromSingle(observable.toSingle()).toFuture();
         new TwitterUtil2RxConverters.FutureToRx<Object>(Future.value(new Object())).toSingle();
     }
 }
