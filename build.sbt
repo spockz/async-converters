@@ -2,7 +2,7 @@ organization := "com.github.spockz"
 
 name := "async-converters"
 
-val scalaLibVersion = "2.11.7"
+val scalaLibVersion = "2.11.8"
 
 scalaVersion := scalaLibVersion
 

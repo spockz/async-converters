@@ -23,22 +23,24 @@ object TwitterUtil2RxConverters {
     /**
      * Convert the underlying future to a [[rx.Single]]
      */
-    def toSingle: Single[A] = Single.create[A](new OnSubscribe[A] {
-      override def call(subscriber: SingleSubscriber[_ >: A]): Unit = {
-        future.map { value =>
-          if (!subscriber.isUnsubscribed) subscriber.onSuccess(value)
-        }
-        future.onFailure { throwable =>
-          if (!subscriber.isUnsubscribed) subscriber.onError(throwable)
-        }
-      }
-    })
+    def toSingle: Single[A] = Single.create[A](new Subscriber[A](future))
 
     /**
      * Convert the underlying future into an [[rx.Observable]] with a single
      * value.
      */
     def toObservable: Observable[A] = toSingle.toObservable
+  }
+
+  private class Subscriber[A](val future: Future[A]) extends OnSubscribe[A] {
+    override def call(subscriber: SingleSubscriber[_ >: A]): Unit = {
+      future.map { value =>
+        if (!subscriber.isUnsubscribed) subscriber.onSuccess(value)
+      }
+      future.onFailure { throwable =>
+        if (!subscriber.isUnsubscribed) subscriber.onError(throwable)
+      }
+    }
   }
 
   implicit def fromFuture[A](future: Future[A]): FutureToRx[A] =
