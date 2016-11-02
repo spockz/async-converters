@@ -32,7 +32,7 @@ object TwitterUtil2RxConverters {
     def toObservable: Observable[A] = toSingle.toObservable
   }
 
-  private class Subscriber[A](val future: Future[A]) extends OnSubscribe[A] {
+  private[this] class Subscriber[A](val future: Future[A]) extends OnSubscribe[A] {
     override def call(subscriber: SingleSubscriber[_ >: A]): Unit = {
       future.map { value =>
         if (!subscriber.isUnsubscribed) subscriber.onSuccess(value)
