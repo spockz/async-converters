@@ -2,19 +2,19 @@ organization := "com.github.spockz"
 
 name := "async-converters"
 
-val scalaLibVersion = "2.12.0"
+val scalaLibVersion = "2.12.1"
 
 scalaVersion := scalaLibVersion
 
-crossScalaVersions := Seq("2.10.6", "2.11.8", scalaLibVersion)
+crossScalaVersions := Seq("2.11.8", scalaLibVersion)
 
 releaseCrossBuild := true
 
 libraryDependencies ++= Seq(
   "io.reactivex" % "rxjava" % "1.1.1" % "provided",
-  "com.twitter" %% "util-core" % "6.38.0-SNAPSHOT" % "provided",
+  "com.twitter" %% "util-core" % "6.40.0" % "provided",
 
-  "org.scalatest" %% "scalatest" % "3.0.0" % "test"
+  "org.scalatest" %% "scalatest" % "3.0.1" % "test"
 )
 
 pomExtra in Global := {
